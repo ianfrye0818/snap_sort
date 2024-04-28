@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import db from '../services/db';
 
 export async function uploadImages(req: Request, res: Response) {
   res.send('Image uploaded!');

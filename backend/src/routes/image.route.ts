@@ -11,19 +11,19 @@ import {
   uploadImages,
 } from '../controllers/image.controller';
 
-const route = express.Router();
+const router = express.Router();
 
-route.get('/', getImages);
-route.get('/:id', getImage);
-route.get('/tag/:tag', getImagesByTag);
-route.get('/location/:location', getImagesByLocation);
-route.get('/date/:date', getImagesByDate);
+router.get('/', getImages);
+router.get('/:id', getImage);
+router.get('/tag/:tag', getImagesByTag);
+router.get('/location/:location', getImagesByLocation);
+router.get('/date/:date', getImagesByDate);
 
-route.post('/', uploadImages);
+router.post('/', uploadImages);
 
-route.patch('/:id', updateImage);
+router.patch('/:id', updateImage);
 
-route.delete('/', deleteImages);
-route.delete('/:id', deleteImage);
+router.delete('/', deleteImages);
+router.delete('/:id', deleteImage);
 
-export default route;
+export default router;

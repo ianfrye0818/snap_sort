@@ -1,29 +1,39 @@
 import { Role } from './Role.enum';
 
+interface UserProps {
+  id: string;
+  email: string;
+  password: string;
+  createdAt?: Date;
+  name?: string;
+  updatedAt?: Date;
+  role?: Role;
+}
+
 class User {
-  constructor(
-    private id: string,
-    private email: string,
-    private password: string,
-    private createdAt?: Date,
-    private name?: string,
-    private updatedAt?: Date,
-    private role?: Role
-  ) {
+  private id: string;
+  private email: string;
+  private password: string;
+  private readonly createdAt: Date;
+  private name: string;
+  private updatedAt: Date;
+  private role: Role;
+
+  constructor({ id, email, password, createdAt, name, updatedAt, role }: UserProps) {
     this.id = id;
     this.email = email;
-    this.name = name ?? '';
     this.password = password;
-    this.role = role ?? Role.USER;
-    this.createdAt = createdAt ?? new Date();
-    this.updatedAt = updatedAt ?? new Date();
+    this.createdAt = createdAt || new Date();
+    this.name = name || '';
+    this.updatedAt = updatedAt || new Date();
+    this.role = role || Role.USER;
   }
 
-  public getId(): string {
+  public get getId(): string {
     return this.id;
   }
 
-  public getUser() {
+  public get getUser() {
     return {
       id: this.id,
       email: this.email,
@@ -32,23 +42,23 @@ class User {
     };
   }
 
-  public getRole() {
+  public get getRole() {
     return this.role;
   }
 
-  public updateRole(role: Role) {
+  public set updateRole(role: Role) {
     this.role = role;
   }
 
-  public updateName(name: string) {
+  public set updateName(name: string) {
     this.name = name;
   }
 
-  public updateEmail(email: string) {
+  public set updateEmail(email: string) {
     this.email = email;
   }
 
-  public updatePassword(password: string) {
+  public set updatePassword(password: string) {
     this.password = password;
   }
 }
